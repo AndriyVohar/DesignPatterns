@@ -1,0 +1,64 @@
+<!-- Сервер -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <script src="meeting-loader.js"></script>
+    <script src="user-loader.js"></script> -->
+    <script src="classes-factory.js"></script>
+    <script>
+      //======= Files =====================
+      let meetingFileJSON = "data/meetings/meeting-1.json";
+      let meetingFileXML = "data/meetings/meeting-1.xml";
+
+      let userFileJSON = "data/users/user-1.json";
+      let userFileXML = "data/users/user-1.xml";
+
+      //============= Factory method =================================
+      const factory = new DataLoaderFactory();
+
+      //Meeting JSON
+      let meetingLoaderJSON = factory.createLoader(meetingFileJSON);
+      meetingLoaderJSON.loadFromFile(meetingFileJSON).then((data) => {
+        if (data) {
+          console.log("Meeting Data:", data);
+        } else {
+          console.log("Meeting data could not be loaded.");
+        }
+      });
+      //Meeting XML
+      let meetingLoaderXML = factory.createLoader(meetingFileXML);
+      meetingLoaderXML.loadFromFile(meetingFileXML).then((data) => {
+        if (data) {
+          console.log("Meeting Data:", data);
+        } else {
+          console.log("Meeting data could not be loaded.");
+        }
+      });
+
+      //User JSON
+      let userLoaderJSON = factory.createLoader(userFileJSON);
+      userLoaderJSON.loadFromFile(userFileJSON).then((data) => {
+        if (data) {
+          console.log("User data:", data);
+        } else {
+          console.log("Meeting data could not be loaded.");
+        }
+      });
+      //User XML
+      const userLoaderXML = factory.createLoader(userFileXML);
+      userLoaderXML.loadFromFile(userFileXML).then((data) => {
+        if (data) {
+          console.log("User Data:", data);
+        } else {
+          console.log("User data could not be loaded.");
+        }
+      });
+    </script>
+  </body>
+</html>

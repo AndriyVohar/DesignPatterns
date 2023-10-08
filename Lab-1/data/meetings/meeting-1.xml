@@ -1,0 +1,10 @@
+<meeting>
+    <date>2023-09-30</date>
+    <description>Online Meeting</description>
+    <url>https://example.com/meeting</url>
+    <participants>
+        <participant>John</participant>
+        <participant>Alice</participant>
+        <participant>Bob</participant>
+    </participants>
+</meeting>
