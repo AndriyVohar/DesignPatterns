@@ -1,0 +1,10 @@
+{
+  "date": "2023-09-30",
+  "description": "Online Meeting",
+  "url": "https://example.com/meeting",
+  "participants": [
+    "John",
+    "Alice",
+    "Bob"
+  ]
+}

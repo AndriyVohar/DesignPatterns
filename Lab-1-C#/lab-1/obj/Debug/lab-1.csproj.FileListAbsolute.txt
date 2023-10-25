@@ -1,0 +1,11 @@
+C:\xampp\htdocs\patterns\lab-1\lab-1\obj\Debug\lab-1.csproj.AssemblyReference.cache
+C:\xampp\htdocs\patterns\lab-1\lab-1\obj\Debug\lab-1.csproj.SuggestedBindingRedirects.cache
+C:\xampp\htdocs\patterns\lab-1\lab-1\obj\Debug\lab-1.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\patterns\lab-1\lab-1\bin\Debug\lab-1.exe.config
+C:\xampp\htdocs\patterns\lab-1\lab-1\bin\Debug\lab-1.exe
+C:\xampp\htdocs\patterns\lab-1\lab-1\bin\Debug\lab-1.pdb
+C:\xampp\htdocs\patterns\lab-1\lab-1\bin\Debug\Newtonsoft.Json.dll
+C:\xampp\htdocs\patterns\lab-1\lab-1\bin\Debug\Newtonsoft.Json.xml
+C:\xampp\htdocs\patterns\lab-1\lab-1\obj\Debug\lab-1.csproj.CopyComplete
+C:\xampp\htdocs\patterns\lab-1\lab-1\obj\Debug\lab-1.exe
+C:\xampp\htdocs\patterns\lab-1\lab-1\obj\Debug\lab-1.pdb
