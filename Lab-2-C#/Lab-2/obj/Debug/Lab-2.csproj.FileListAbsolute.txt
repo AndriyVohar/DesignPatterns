@@ -1,0 +1,8 @@
+C:\xampp\htdocs\patterns\Lab-2\Lab-2\obj\Debug\Lab-2.csproj.AssemblyReference.cache
+C:\xampp\htdocs\patterns\Lab-2\Lab-2\obj\Debug\Lab-2.csproj.SuggestedBindingRedirects.cache
+C:\xampp\htdocs\patterns\Lab-2\Lab-2\obj\Debug\Lab-2.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\patterns\Lab-2\Lab-2\bin\Debug\Lab-2.exe.config
+C:\xampp\htdocs\patterns\Lab-2\Lab-2\bin\Debug\Lab-2.exe
+C:\xampp\htdocs\patterns\Lab-2\Lab-2\bin\Debug\Lab-2.pdb
+C:\xampp\htdocs\patterns\Lab-2\Lab-2\obj\Debug\Lab-2.exe
+C:\xampp\htdocs\patterns\Lab-2\Lab-2\obj\Debug\Lab-2.pdb
