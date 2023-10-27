@@ -1,0 +1,8 @@
+C:\xampp\htdocs\patterns\MKR-1\MKR-1\bin\Debug\MKR-1.exe.config
+C:\xampp\htdocs\patterns\MKR-1\MKR-1\bin\Debug\MKR-1.exe
+C:\xampp\htdocs\patterns\MKR-1\MKR-1\bin\Debug\MKR-1.pdb
+C:\xampp\htdocs\patterns\MKR-1\MKR-1\obj\Debug\MKR-1.csproj.AssemblyReference.cache
+C:\xampp\htdocs\patterns\MKR-1\MKR-1\obj\Debug\MKR-1.csproj.SuggestedBindingRedirects.cache
+C:\xampp\htdocs\patterns\MKR-1\MKR-1\obj\Debug\MKR-1.csproj.CoreCompileInputs.cache
+C:\xampp\htdocs\patterns\MKR-1\MKR-1\obj\Debug\MKR-1.exe
+C:\xampp\htdocs\patterns\MKR-1\MKR-1\obj\Debug\MKR-1.pdb
