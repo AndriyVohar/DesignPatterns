@@ -1,0 +1,8 @@
+C:\Users\Lenovo x270\Documents\SDHC\patterns\Lab-2\Lab-2\bin\Debug\Lab-2.exe.config
+C:\Users\Lenovo x270\Documents\SDHC\patterns\Lab-2\Lab-2\bin\Debug\Lab-2.exe
+C:\Users\Lenovo x270\Documents\SDHC\patterns\Lab-2\Lab-2\bin\Debug\Lab-2.pdb
+C:\Users\Lenovo x270\Documents\SDHC\patterns\Lab-2\Lab-2\obj\Debug\Lab-2.csproj.AssemblyReference.cache
+C:\Users\Lenovo x270\Documents\SDHC\patterns\Lab-2\Lab-2\obj\Debug\Lab-2.csproj.SuggestedBindingRedirects.cache
+C:\Users\Lenovo x270\Documents\SDHC\patterns\Lab-2\Lab-2\obj\Debug\Lab-2.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo x270\Documents\SDHC\patterns\Lab-2\Lab-2\obj\Debug\Lab-2.exe
+C:\Users\Lenovo x270\Documents\SDHC\patterns\Lab-2\Lab-2\obj\Debug\Lab-2.pdb
