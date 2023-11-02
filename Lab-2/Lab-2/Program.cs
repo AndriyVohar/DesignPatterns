@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab_2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,12 +11,12 @@ namespace Lab_2
     // Клас для фастфуду
     class FastFoodOrderSystem
     {
-        public void PlaceOrder(List<Tuple<int, int>> items)
+        public void PlaceOrder(int[][] items)
         {
             Console.WriteLine("Вас вітає фастфуд. Ваші замовлення вже готуються, а саме:");
-            foreach(var item in items)
+            for (int i = 0; i < items.GetLength(0); i++)
             {
-                Console.WriteLine($"Id: {item.Item1}, Quantity: {item.Item2}");
+                Console.WriteLine($"Id: {items[i][0]}, Quantity: {items[i][1]}");
             }
         }
     }
@@ -23,10 +24,10 @@ namespace Lab_2
     // Клас для суші
     class SushiOrderSystem
     {
-        public void PlaceOrder(List<int> codes, List<int> quantities)
+        public void PlaceOrder(int[] codes, int[] quantities)
         {
             Console.WriteLine("Вас вітає сушист. Ваші замовлення вже готуються, а саме:");
-            for (int i = 0; i < codes.Count; i++)
+            for (int i = 0; i < codes.Length; i++)
             {
                 Console.WriteLine($"Id: {codes[i]}, Quantity: {quantities[i]}");
             }
@@ -36,7 +37,7 @@ namespace Lab_2
     // Клас для традиційної української кухні
     class UkrainianCuisineOrderSystem
     {
-        public void PlaceOrder(List<int> codes)
+        public void PlaceOrder(int[] codes)
         {
             HashSet<int> uniqueValues = new HashSet<int>(codes);
             Console.WriteLine("Вас вітає ресторан української їжі. Ваші замовлення вже готуються, а саме:");
@@ -60,22 +61,68 @@ namespace Lab_2
             sushiOrderSystem = new SushiOrderSystem();
             ukrainianCuisineOrderSystem = new UkrainianCuisineOrderSystem();
         }
-
-        public void PlaceOrder(char foodType, object orderDetails)
+        private int[][] convertToFastFood(int[][] array)
         {
-            if (foodType == 'a' && orderDetails is List<Tuple<int, int>> fastFoodOrder)
+            int[][] fastFood = new int[array.GetLength(0)][];
+            for(int i = 0; i < array.GetLength(0); i++)
             {
-                fastFoodOrderSystem.PlaceOrder(fastFoodOrder);
+                fastFood[i] = new int[2];
+                fastFood[i][0] = array[i][1];
+                fastFood[i][1] = array[i][0];
+
             }
-            else if (foodType == 'b' && orderDetails is List<List<int>> sushiOrder)
+            return fastFood;
+        }
+        private int[] idSushiOrders(int[][] array)
+        {
+            int[] idSushi = new int[array.GetLength(0)];
+            for (int i = 0; i < array.GetLength(0); i++)
             {
-                var codes = sushiOrder[0];
-                var quantities = sushiOrder[1];
+                idSushi[i] = array[i][1];
+            }
+            return idSushi;
+        }
+        private int[] quantitySushiOrders(int[][] array)
+        {
+            int[] quantitySushi = new int[array.GetLength(0)];
+            for (int i = 0; i < array.GetLength(0); i++)
+            {
+                quantitySushi[i] = array[i][0];
+            }
+            return quantitySushi;
+        }
+        private int[] ukrainianOrder(int[][] array)
+        {
+            int[] oneDimensionalArray = new int[array[0].Length*array.GetLength(0)];
+            int currentIndex = 0;
+            foreach (var pair in array)
+            {
+                int code = pair[1];
+                int quantity = pair[0];
+
+                for (int i = 0; i < quantity; i++)
+                {
+                    oneDimensionalArray[currentIndex] = code;
+                    currentIndex++;
+                }
+            }
+            return oneDimensionalArray;
+        }
+        public void PlaceOrder(char foodType, int[][] orderDetails)
+        {
+            if (foodType == 'a')
+            {
+                fastFoodOrderSystem.PlaceOrder(convertToFastFood(orderDetails));
+            }
+            else if (foodType == 'b')
+            {
+                int[] codes = idSushiOrders(orderDetails);
+                int[] quantities = quantitySushiOrders(orderDetails);
                 sushiOrderSystem.PlaceOrder(codes, quantities);
             }
-            else if (foodType == 'c' && orderDetails is List<int> ukrainianCuisineOrder)
+            else if (foodType == 'c')
             {
-                ukrainianCuisineOrderSystem.PlaceOrder(ukrainianCuisineOrder);
+                ukrainianCuisineOrderSystem.PlaceOrder(ukrainianOrder(orderDetails));
             }
             else
             {
@@ -84,16 +131,18 @@ namespace Lab_2
         }
     }
 
-
-
     internal class Program
     {
         static void Main(string[] args)
         {
             var facade = new FoodDeliveryFacade();
-            facade.PlaceOrder('a', new List<Tuple<int, int>> { Tuple.Create(123, 3), Tuple.Create(500, 1), Tuple.Create(42, 2) });
-            facade.PlaceOrder('b', new List<List<int>> { new List<int> { 123, 500, 42 }, new List<int> { 3, 1, 2 } });
-            facade.PlaceOrder('c', new List<int> { 123, 123, 123, 500, 42, 42 });
+            int[][] foodList = new int[3][];
+            foodList[0] = new int[2] { 3, 123 };
+            foodList[1] = new int[2] { 1, 500 };
+            foodList[2] = new int[2] { 2, 42 };
+            facade.PlaceOrder('a', foodList);
+            facade.PlaceOrder('b', foodList);
+            facade.PlaceOrder('c', foodList);
         }
     }
 }
