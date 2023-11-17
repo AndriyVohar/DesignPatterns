@@ -14,10 +14,15 @@ namespace Lab_4
         {
             public string Title { get; set; }
             public string[] Topics { get; set; }
+        }
+        public class NewsText : News {
             public string Content { get; set; }
+        }
+        public class NewsVideo: News
+        {
             public string VideoUrl { get; set; }
         }
-//Observer
+        //Observer
         public interface IUser
         {
             void Update(News news);
@@ -25,39 +30,68 @@ namespace Lab_4
 //Subject
         public interface ISystem
         {
-            void Attach(IUser user);
-            void Detach(IUser user);
-            void Notify();
+            void AttachForText(IUser user);
+            void AttachForVideo(IUser user);
+            void DetachForText(IUser user);
+            void DetachForVideo(IUser user);
+            void NotifyText();
+            void NotifyVideo();
         }
 
 //System (Subject)
         public class System : ISystem {
             
-            List<IUser> users = new List<IUser>();
-            private List<News> newsCollection = new List<News>();
-            public void Attach(IUser observer)
+            List<IUser> usersForText = new List<IUser>();
+            List<IUser> usersForVideo = new List<IUser>();  
+            private List<NewsText> newsCollectionText = new List<NewsText>();
+            private List<NewsVideo> newsCollectionVideo = new List<NewsVideo>();
+            public void AttachForText(IUser observer)
             {
                 Console.WriteLine("System: Attached an user.");
-                this.users.Add(observer);
+                this.usersForText.Add(observer);
             }
-            public void Detach(IUser observer)
+            public void DetachForText(IUser observer)
             {
-                this.users.Remove(observer);
+                this.usersForText.Remove(observer);
                 Console.WriteLine("System: Detached an user.");
             }
-            public void Notify()
+            public void AttachForVideo(IUser observer)
+            {
+                Console.WriteLine("System: Attached an user.");
+                this.usersForVideo.Add(observer);
+            }
+            public void DetachForVideo(IUser observer)
+            {
+                this.usersForVideo.Remove(observer);
+                Console.WriteLine("System: Detached an user.");
+            }
+            public void NotifyText()
             {
                 Console.WriteLine("System: Notifying users...");
 
-                foreach (var observer in users)
+                foreach (var observer in usersForText)
                 {
-                    observer.Update(newsCollection[newsCollection.Count - 1]); //Повідомлення про останню новину
+                    observer.Update(newsCollectionText[newsCollectionText.Count - 1]); //Повідомлення про останню новину
                 }
             }
-            public void PublishNews(News news)
+            public void NotifyVideo()
             {
-                newsCollection.Add(news);
-                this.Notify();
+                Console.WriteLine("System: Notifying users...");
+
+                foreach (var observer in usersForVideo)
+                {
+                    observer.Update(newsCollectionVideo[newsCollectionVideo.Count - 1]); //Повідомлення про останню новину
+                }
+            }
+            public void PublishNewsText(NewsText news)
+            {
+                newsCollectionText.Add(news);
+                this.NotifyText();
+            }
+            public void PublishNewsVideo(NewsVideo news)
+            {
+                newsCollectionVideo.Add(news);
+                this.NotifyVideo();
             }
         }
 
@@ -76,14 +110,22 @@ namespace Lab_4
                 Console.WriteLine($"{name} received an update: {news.Title}");
             }
 
-            public void SubscribeToNews(ISystem system)
+            public void SubscribeToNewsText(ISystem system)
             {
-                system.Attach(this);
+                system.AttachForText(this);
+            }
+            public void SubscribeToNewsVideo(ISystem system)
+            {
+                system.AttachForVideo(this);
             }
 
-            public void UnsubscribeFromNews(ISystem system)
+            public void UnsubscribeFromNewsText(ISystem system)
             {
-                system.Detach(this);
+                system.DetachForText(this);
+            }
+            public void UnsubscribeFromNewsVideo(ISystem system)
+            {
+                system.DetachForVideo(this);
             }
         }
 
@@ -104,22 +146,22 @@ namespace Lab_4
             var user2 = new User("User2");
 
             // Підписка користувачів на різні типи новин
-            user1.SubscribeToNews(newsSystem);
-            user2.SubscribeToNews(newsSystem);
+            user1.SubscribeToNewsText(newsSystem);
+            user2.SubscribeToNewsVideo(newsSystem);
 
             // Публікація новин
-            var news1 = new News { Title = "Text News 1", Topics = new[] { "text" }, Content = "Some text content" };
-            var news2 = new News { Title = "Video News 1", Topics = new[] { "video" }, VideoUrl = "https://example.com/video1" };
+            var news1 = new NewsText { Title = "Text News 1", Topics = new[] { "text" }, Content = "Some text content" };
+            var news2 = new NewsVideo { Title = "Video News 1", Topics = new[] { "video" }, VideoUrl = "https://example.com/video1" };
 
-            newsSystem.PublishNews(news1);
-            newsSystem.PublishNews(news2);
+            newsSystem.PublishNewsText(news1);
+            newsSystem.PublishNewsVideo(news2);
 
             // Відписка одного користувача
-            user1.UnsubscribeFromNews(newsSystem);
+            user2.UnsubscribeFromNewsVideo(newsSystem);
 
             // Публікація ще одної новини
-            var news3 = new News { Title = "Text News 2", Topics = new[] { "text" }, Content = "Some other text content" };
-            newsSystem.PublishNews(news3);
+            var news3 = new NewsText { Title = "Text News 2", Topics = new[] { "text" }, Content = "Some other text content" };
+            newsSystem.PublishNewsText(news3);
         }
     }
 }
